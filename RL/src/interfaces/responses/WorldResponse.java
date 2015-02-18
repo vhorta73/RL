@@ -16,31 +16,31 @@ import constants.Action;
  *
  */
 public interface WorldResponse extends Response {
-	/**
-	 * The current state the agent is.
-	 * 
-	 * @return State
-	 */
-	State getCurrentState();
-	
-	/**
-	 * The action taken at the previous state.
-	 * 
-	 * @return Action
-	 */
-	Action getAction();
-	
-	/**
-	 * The actions available at the current state.
-	 * 
-	 * @return List<Action>
-	 */
-	List<Action> getAvailableActions();
-	
-	/**
-	 * Checking if current state is goal state.
-	 * 
-	 * @return true if goal state.
-	 */
-	Boolean isGoal();
+    /**
+     * The current state the agent is.
+     * 
+     * @return State
+     */
+    State getCurrentState();
+    
+    /**
+     * The action taken at the previous state.
+     * 
+     * @return Action
+     */
+    Action getAction();
+    
+    /**
+     * The actions available at the current state.
+     * 
+     * @return List<Action>
+     */
+    List<Action> getAvailableActions();
+    
+    /**
+     * Checking if current state is goal state.
+     * 
+     * @return true if goal state.
+     */
+    Boolean isGoal();
 }

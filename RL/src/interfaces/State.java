@@ -7,11 +7,11 @@ package interfaces;
  *
  */
 public interface State {
-	/**
-	 * Returns the initialized state object.
-	 * 
-	 * @return Object
-	 */
-	Object getState();
-	
+    /**
+     * Returns the initialized state object.
+     * 
+     * @return Object
+     */
+    Object getState();
+    
 }

@@ -7,20 +7,20 @@ package interfaces.responses;
  *
  */
 public interface Response {
-	/**
-	 * Returns the object.
-	 * 
-	 * If an error exists, returns null
-	 */
-	Object get();
-	
-	/**
-	 * Returns true if an error is found.
-	 */
-	Boolean hasError();
-	
-	/**
-	 * Returns the Error if any
-	 */
-	Object getError();
+    /**
+     * Returns the object.
+     * 
+     * If an error exists, returns null
+     */
+    Object get();
+    
+    /**
+     * Returns true if an error is found.
+     */
+    Boolean hasError();
+    
+    /**
+     * Returns the Error if any
+     */
+    Object getError();
 }

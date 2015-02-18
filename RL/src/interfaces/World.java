@@ -12,14 +12,14 @@ package interfaces;
  *
  */
 public interface World extends Runnable {
-	/**
-	 * Show the current World State.
-	 */
-	void showState(World world);
+    /**
+     * Show the current World State.
+     */
+    void showState(World world);
 
-	/**
-	 * Show current agent's State.
-	 */
-	void showState(Agent agent);
-	
+    /**
+     * Show current agent's State.
+     */
+    void showState(Agent agent);
+    
 }
