@@ -2,43 +2,42 @@ package interfaces.responses;
 
 import interfaces.State;
 
-import java.util.List;
+import java.util.Set;
 
 import constants.Action;
 
 /**
  * World response object after an action was requested by the agent.
- * Returns the previous state the agent was in,
- * the action taken by the agent, the new state the agent ends up in
- * and a reward if any.
+ * Returns the current state the agent is ending up in, the action
+ * taken by the agent, and a reward if any.
  * 
  * @author Vasco
  *
  */
 public interface WorldResponse extends Response {
     /**
-     * The current state the agent is.
+     * The current state the agent is in now.
      * 
      * @return State
      */
-    State getCurrentState();
+    State currentState();
     
     /**
-     * The action taken at the previous state.
+     * The previous action taken at the previous state.
      * 
      * @return Action
      */
-    Action getAction();
+    Action previousAction();
     
     /**
-     * The actions available at the current state.
+     * Set of Actions available at current state.
      * 
-     * @return List<Action>
+     * @return Set of available actions.
      */
-    List<Action> getAvailableActions();
+    Set<Action> availableActions();
     
     /**
-     * Checking if current state is goal state.
+     * Check if current state is at the environment's defined goal state.
      * 
      * @return true if goal state.
      */

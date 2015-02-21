@@ -14,7 +14,7 @@ import constants.Action;
  * @author Vasco
  *
  */
-public interface State  {
+public interface State {
 	/**
 	 * Get the list of all available valid actions.
 	 * 
@@ -31,7 +31,7 @@ public interface State  {
     Boolean equals(State state);
     
     /**
-     * Get the State initialized value.
+     * Get the State initialised value.
      */
-    <T> T getState();
+    Object getState();
 }

@@ -129,4 +129,21 @@ public class AgentImpl implements Agent {
         return agentInfo;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+	@Override
+	public void store(State previousState, Action actionTaken,
+			State finalState, Boolean isGoal) {
+		// TODO Auto-generated method stub
+	}
+
+    /**
+     * {@inheritDoc}
+     */
+	@Override
+	public Action getBestAction(State currentState) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

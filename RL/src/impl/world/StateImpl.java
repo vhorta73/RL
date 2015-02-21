@@ -7,14 +7,13 @@ import java.util.Set;
 import constants.Action;
 /**
  * @author Vasco
- * @param <T>
  *
  */
-public class StateImpl<T> implements State {
+public class StateImpl implements State {
     /**
      * The State value.
      */
-	private final T stateValue;
+	private final Object stateValue;
 	
 	/**
 	 * The Set of available actions
@@ -23,13 +22,12 @@ public class StateImpl<T> implements State {
 	
 	/**
 	 * Constructor.
-	 * @param <T>
 	 * 
 	 * @param state the state value
 	 * @param actions list of available actions
 	 */
-	public StateImpl(T state, Set<Action> actions) {
-		this.stateValue      = (T) state;
+	public StateImpl(Object state, Set<Action> actions) {
+		this.stateValue      = state;
 		this.availableAtions = actions;
 	}
 
@@ -60,9 +58,8 @@ public class StateImpl<T> implements State {
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings({ "hiding", "unchecked" })
-	@Override
-	public <T> T getState() {
-		return (T) stateValue;
+	@Override	
+	public Object getState() {
+		return stateValue;
 	}
 }

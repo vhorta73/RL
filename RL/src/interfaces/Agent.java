@@ -11,7 +11,7 @@ import constants.Action;
  * @author Vasco
  *
  */
-public interface Agent {
+public interface Agent extends DataBank {
     /**
      * World response for an action taken by the agent will be assigned to the agent.response().</br>
      * The agent will then take this response() and make needed calculations.

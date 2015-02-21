@@ -22,7 +22,7 @@ public class TestState {
 	/**
 	 * The state value
 	 */
-	private Object STATE_VALUE = 123;
+	private Integer STATE_VALUE = 123;
 	
 	/**
 	 * Available Actions
@@ -38,7 +38,7 @@ public class TestState {
 		actions.add(Action.LEFT);
 		actions.add(Action.DOWN_RIGHT);
 		actions.add(Action.IDLE);
-		state = new StateImpl<Object>(STATE_VALUE, actions);
+		state = new StateImpl(STATE_VALUE, actions);
 	}
 	
 	/**
@@ -55,7 +55,7 @@ public class TestState {
 	 */
 	@Test
 	public void testEqualStates() {
-		State expected = new StateImpl<Object>(STATE_VALUE, actions);
+		State expected = new StateImpl(STATE_VALUE, actions);
 		assertTrue(state.equals(expected));
 	}
 
@@ -66,7 +66,7 @@ public class TestState {
 	public void testNotEqualStates() {
 		Set<Action> newActions = new HashSet<Action>();
 		newActions.add(Action.DOWN);
-		State expected = new StateImpl<Object>(STATE_VALUE, newActions);
+		State expected = new StateImpl(STATE_VALUE, newActions);
 		assertTrue(!state.equals(expected));
 	}
 
@@ -75,7 +75,7 @@ public class TestState {
 	 */
 	@Test
 	public void testStateValue() {
-		Integer stateValueFound = state.getState();
+		Integer stateValueFound = (Integer) state.getState();
 		assertEquals(STATE_VALUE, stateValueFound);
 	}
 }
