@@ -87,8 +87,8 @@ public class TestAgent {
         List<Action> actionList = new ArrayList<Action>();
         actionList.add(PREVIOUS_ACTION);
         actionList.add(NEXT_ACTION);
-        agent.worldResponse(previousState, actionList, true);
-        agent.worldResponse(currentState,  actionList, true);
+        agent.worldResponse(previousState, true);
+        agent.worldResponse(currentState, true);
     }
 
     /**

@@ -1,9 +1,6 @@
 package interfaces;
 
 import interfaces.responses.AgentInfo;
-
-import java.util.List;
-
 import constants.Action;
 
 /**
@@ -19,11 +16,10 @@ public interface Agent {
      * World response for an action taken by the agent will be assigned to the agent.response().</br>
      * The agent will then take this response() and make needed calculations.
      * 
-     * @param currentState the new state
-     * @param availableActions list of actions available at this state
+     * @param currentState the new state and available actions.
      * @param isGoal true if at goal state.
      */
-    void worldResponse(State currentState, List<Action> availableActions, boolean isGoal); 
+    void worldResponse(State currentState, boolean isGoal); 
 
     /**
      * The World will ask the agent for the next action.</br>
@@ -55,11 +51,10 @@ public interface Agent {
      * does not match the ones at the Agent, a warning should be thrown, but the agent should take
      * what the World says as the truth.
      * 
-     * @param currentState the Agent is in.
-     * @param availableActions List of actions available to do
+     * @param currentState the Agent is in with available actions.
      * @param receivedAction invalid received Action refused by the World
      */
-    void invalidAction(State currentState, List<Action> availableActions, Action receivedAction);
+    void invalidAction(State currentState, Action receivedAction);
     
     /**
      * The agent's attributes

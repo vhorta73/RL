@@ -6,7 +6,6 @@ import interfaces.State;
 import interfaces.responses.AgentInfo;
 
 import java.lang.annotation.Inherited;
-import java.util.List;
 
 import constants.Action;
 
@@ -81,7 +80,7 @@ public class AgentImpl implements Agent {
     /**
      * {@inheritDoc}
      */
-    public void worldResponse(State currentState, List<Action> availableActions, boolean isGoal) {
+    public void worldResponse(State currentState, boolean isGoal) {
         if ( isGoal ) { this.goals++; }
         this.previousState = this.currentState;
         this.currentState = currentState;
@@ -109,7 +108,7 @@ public class AgentImpl implements Agent {
     /**
      * {@inheritDoc}
      */
-    public void invalidAction(State currentState, List<Action> availableActions, Action receivedAction) {
+    public void invalidAction(State currentState, Action receivedAction) {
     }
 
     /**
