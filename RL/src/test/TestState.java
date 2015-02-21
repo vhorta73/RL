@@ -5,8 +5,8 @@ import static org.junit.Assert.assertTrue;
 import impl.world.StateImpl;
 import interfaces.State;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,23 +22,23 @@ public class TestState {
 	/**
 	 * The state value
 	 */
-	private Integer STATE_VALUE = 123;
+	private Object STATE_VALUE = 123;
 	
 	/**
 	 * Available Actions
 	 */
-	private List<Action> actions;
+	private Set<Action> actions;
 	
 	@Before
 	public void before() {
-		actions = new LinkedList<Action>();
+		actions = new HashSet<Action>();
 		actions.add(Action.DOWN);
 		actions.add(Action.UP);
 		actions.add(Action.RIGHT);
 		actions.add(Action.LEFT);
 		actions.add(Action.DOWN_RIGHT);
 		actions.add(Action.IDLE);
-		state = new StateImpl(STATE_VALUE, actions);
+		state = new StateImpl<Object>(STATE_VALUE, actions);
 	}
 	
 	/**
@@ -46,7 +46,7 @@ public class TestState {
 	 */
 	@Test
 	public void testGetActionList() {
-		List<Action> foundActions = state.getActionList();
+		Set<Action> foundActions = state.getActionList();
 		assertEquals(actions, foundActions);
 	}
 	
@@ -55,7 +55,7 @@ public class TestState {
 	 */
 	@Test
 	public void testEqualStates() {
-		State expected = new StateImpl(STATE_VALUE, actions);
+		State expected = new StateImpl<Object>(STATE_VALUE, actions);
 		assertTrue(state.equals(expected));
 	}
 
@@ -64,9 +64,9 @@ public class TestState {
 	 */
 	@Test
 	public void testNotEqualStates() {
-		List<Action> newActions = new LinkedList<Action>();
+		Set<Action> newActions = new HashSet<Action>();
 		newActions.add(Action.DOWN);
-		State expected = new StateImpl(STATE_VALUE, newActions);
+		State expected = new StateImpl<Object>(STATE_VALUE, newActions);
 		assertTrue(!state.equals(expected));
 	}
 
@@ -75,7 +75,7 @@ public class TestState {
 	 */
 	@Test
 	public void testStateValue() {
-		Integer stateValueFound = (int)state.getState();
+		Integer stateValueFound = state.getState();
 		assertEquals(STATE_VALUE, stateValueFound);
 	}
 }

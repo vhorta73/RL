@@ -2,32 +2,34 @@ package impl.world;
 
 import interfaces.State;
 
-import java.util.List;
+import java.util.Set;
 
 import constants.Action;
 /**
  * @author Vasco
+ * @param <T>
  *
  */
-public class StateImpl implements State {
+public class StateImpl<T> implements State {
     /**
      * The State value.
      */
-	private final Object stateValue;
+	private final T stateValue;
 	
 	/**
-	 * The list of available actions
+	 * The Set of available actions
 	 */
-	private final List<Action> availableAtions;
+	private final Set<Action> availableAtions;
 	
 	/**
 	 * Constructor.
+	 * @param <T>
 	 * 
 	 * @param state the state value
 	 * @param actions list of available actions
 	 */
-	public StateImpl(Object state, List<Action> actions) {
-		this.stateValue      = state;
+	public StateImpl(T state, Set<Action> actions) {
+		this.stateValue      = (T) state;
 		this.availableAtions = actions;
 	}
 
@@ -35,7 +37,7 @@ public class StateImpl implements State {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<Action> getActionList() {
+	public Set<Action> getActionList() {
 		return this.availableAtions;
 	}
 
@@ -48,7 +50,7 @@ public class StateImpl implements State {
 			return false;
 		}
 		
-		List<Action> actions = state.getActionList();
+		Set<Action> actions = state.getActionList();
 		if ( this.availableAtions.equals(actions) && this.stateValue.equals(state.getState())) {
 			return true;
 		}
@@ -58,9 +60,9 @@ public class StateImpl implements State {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings({ "hiding", "unchecked" })
 	@Override
-	public Object getState() {
-		return this.stateValue;
+	public <T> T getState() {
+		return (T) stateValue;
 	}
-
 }

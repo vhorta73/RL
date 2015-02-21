@@ -1,6 +1,6 @@
 package interfaces;
 
-import java.util.List;
+import java.util.Set;
 
 import constants.Action;
 
@@ -18,9 +18,9 @@ public interface State  {
 	/**
 	 * Get the list of all available valid actions.
 	 * 
-	 * @return List of Actions
+	 * @return Set of unique Actions
 	 */
-	List<Action> getActionList();
+	Set<Action> getActionList();
 
 	/**
      * Compares two States if equal.
@@ -31,7 +31,7 @@ public interface State  {
     Boolean equals(State state);
     
     /**
-     * Get the State Object initialized value.
+     * Get the State initialized value.
      */
-    Object getState();
+    <T> T getState();
 }
