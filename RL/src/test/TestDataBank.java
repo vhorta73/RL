@@ -44,29 +44,31 @@ public class TestDataBank {
 	/**
 	 * Previous State value
 	 */
-	private String PREVIOUS_STATE_VALUE = "Previous State";
+	private Integer PREVIOUS_STATE_VALUE = 0;
 	
 	/**
 	 * Current State value
 	 */
-	private String CURRENT_STATE_VALUE = "CURRENT State";
+	private Integer CURRENT_STATE_VALUE = 0;
 	
 	/**
 	 * Initialise all required classes with the expected values.
 	 */
 	@Before
 	public void before() {
-		initPreviousState(); // Set the previous state
-		initCurrentState();  // Set the current state
-		dataBank = new DataBankImpl();
+		initPreviousState();           // Set the previous state
+		initCurrentState();            // Set the current state
+		dataBank = new DataBankImpl(); // Get a new instance of DataBankImpl
 	}
 
-	
+	/**
+	 * Check Store is happening by looking at the best action.
+	 */
 	@Test
-	public void test() {
+	public void testBestAction() {
 		dataBank.store(previousState, ACTION_TAKEN, currentState, true);
 		Action bestActionExpected = Action.DOWN;
-		Action bestActionFound = dataBank.getBestAction(currentState);
+		Action bestActionFound = dataBank.getBestAction(previousState);
 		assertEquals(bestActionExpected, bestActionFound);
 	}
 	

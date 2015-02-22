@@ -8,43 +8,62 @@ public class AgentInfoImpl implements AgentInfo {
     /**
      * Agent's name
      */
-    private String name;
+    private final String name;
 
     /**
      * Agent's current State
      */
-    private State currentState;
+    private final State currentState;
     
     /**
      * Agent's previous State
      */
-    private State previousState;
+    private final State previousState;
     
     /**
      * Agent's previous action
      */
-    private Action previousAction;
+    private final Action previousAction;
     
     /**
      * Agent's next action if ready
      */
-    private Action nextAction;
+    private final Action nextAction;
     
     /**
      * Agent's goals
      */
-    private Integer goals;
+    private final Integer goals;
     
     /**
      * Agent's current State value
      */
-    private double currentStateValue;
+    private final Double currentStateValue;
     
     /**
      * Previous state value
      */
-    private double previousStateValue;
+    private final Double previousStateValue;
     
+    /**
+     * Agent's vision radius
+     */
+    private final Integer visionRadius;
+    
+
+    public AgentInfoImpl(String name, State curreState, State previousState,
+    		Action previousAction, Action nextAction, Integer goals, 
+    		Double currentStateValue, Double previousStateValue, Integer visionRadius ) {
+        this.name = name;
+        this.currentState = curreState;
+        this.previousState = previousState;
+        this.previousAction = previousAction;
+        this.nextAction = nextAction;
+        this.goals = goals;
+        this.currentStateValue = currentStateValue;
+        this.previousStateValue = previousStateValue;
+        this.visionRadius = visionRadius;
+	}
 
     /**
      * {@inheritDoc}
@@ -52,14 +71,6 @@ public class AgentInfoImpl implements AgentInfo {
     @Override
     public String name() {
         return this.name;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void setName(String name) {
-        this.name = name;
     }
 
     /**
@@ -74,24 +85,8 @@ public class AgentInfoImpl implements AgentInfo {
      * {@inheritDoc}
      */
     @Override
-    public void setCurrentState(State currentState) {
-        this.currentState = currentState;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public State previousState() {
         return this.previousState;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void setPreviousState(State previousState) {
-        this.previousState = previousState;
     }
 
     /**
@@ -106,24 +101,8 @@ public class AgentInfoImpl implements AgentInfo {
      * {@inheritDoc}
      */
     @Override
-    public void setPreviousAction(Action previousAction) {
-        this.previousAction = previousAction;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public Action nextAction() {
         return this.nextAction;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void setNextAction(Action nextAction) {
-        this.nextAction = nextAction;
     }
 
     /**
@@ -138,15 +117,7 @@ public class AgentInfoImpl implements AgentInfo {
      * {@inheritDoc}
      */
     @Override
-    public void setGoals(Integer goals) {
-        this.goals = goals;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public double currentStateValue() {
+    public Double currentStateValue() {
         return this.currentStateValue;
     }
 
@@ -154,25 +125,17 @@ public class AgentInfoImpl implements AgentInfo {
      * {@inheritDoc}
      */
     @Override
-    public void setCurrentStateValue(double currentStateValue) {
-        this.currentStateValue = currentStateValue;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public double previousStateValue() {
+    public Double previousStateValue() {
         return this.previousStateValue;
     }
     
     /**
      * {@inheritDoc}
      */
-    @Override
-    public void setPreviousStateValue(double previousStateValue) {
-        this.previousStateValue = previousStateValue;
-    }
+	@Override
+	public Integer getVisionRadius() {
+		return visionRadius;
+	}
 
     /**
      * {@inheritDoc}
@@ -189,4 +152,5 @@ public class AgentInfoImpl implements AgentInfo {
         System.out.println("      ");
         System.out.println("============================================");
     }
+
 }

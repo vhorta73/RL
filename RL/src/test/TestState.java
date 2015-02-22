@@ -75,7 +75,7 @@ public class TestState {
 	 */
 	@Test
 	public void testStateValue() {
-		Integer stateValueFound = (Integer) state.getState();
+		Integer stateValueFound = state.getStateValue();
 		assertEquals(STATE_VALUE, stateValueFound);
 	}
 }

@@ -27,7 +27,7 @@ public class AgentImpl implements Agent {
     /**
      * Current State value
      */
-    private double currentStateValue;
+    private Double currentStateValue;
     
     /**
      * Previous State
@@ -37,7 +37,7 @@ public class AgentImpl implements Agent {
     /**
      * Previous State value
      */
-    private double previousStateValue;
+    private Double previousStateValue;
     
     /**
      * Previous Action
@@ -58,11 +58,17 @@ public class AgentImpl implements Agent {
      * Number of goals found
      */
     private int goals;
+
+    /**
+     * Agent's vision radius.
+     */
+    private final Integer VISION_RADIUS;
     
     /**
      * Agent's Constructor default name
      */
-    public AgentImpl() {
+    public AgentImpl(Integer visionRadius) {
+    	this.VISION_RADIUS     = visionRadius;
         this.name              = "Agent " + (int)(Math.random()*100);
         this.goals             = 0;
         this.nextActionIsReady = false;
@@ -71,7 +77,8 @@ public class AgentImpl implements Agent {
     /**
      * Agent's Constructor with name
      */
-    public AgentImpl(String name) {
+    public AgentImpl(String name, Integer visionRadius) {
+    	this.VISION_RADIUS     = visionRadius;
         this.name              = name;
         this.goals             = 0;
         this.nextActionIsReady = false;
@@ -115,18 +122,10 @@ public class AgentImpl implements Agent {
      * {@inheritDoc}
      */
     public AgentInfo info() {
-        AgentInfo agentInfo = new AgentInfoImpl();
-    
-        agentInfo.setCurrentState(currentState);
-        agentInfo.setCurrentStateValue(currentStateValue);
-        agentInfo.setGoals(goals);
-        agentInfo.setName(name);
-        agentInfo.setPreviousAction(previousAction);
-        agentInfo.setNextAction(nextAction);
-        agentInfo.setPreviousState(previousState);
-        agentInfo.setPreviousStateValue(previousStateValue);
-
-        return agentInfo;
+        return new AgentInfoImpl(name, currentState, previousState, 
+        		previousAction, nextAction, goals, currentStateValue, 
+        		previousStateValue, VISION_RADIUS
+        );
     }
 
     /**

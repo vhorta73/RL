@@ -11,6 +11,8 @@ import constants.Action;
  * These actions will lead to other States but the reason why this happens, is dealt
  * with by World's environment class. 
  * 
+ * A State has a value, assigned by the environment for goal purposes.
+ * 
  * @author Vasco
  *
  */
@@ -33,5 +35,5 @@ public interface State {
     /**
      * Get the State initialised value.
      */
-    Object getState();
+    Integer getStateValue();
 }

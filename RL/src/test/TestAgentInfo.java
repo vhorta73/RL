@@ -56,27 +56,25 @@ public class TestAgentInfo {
     /**
      * Current State value
      */
-    private double CURRENT_STATE_VALUE = 34.23;
+    private Double CURRENT_STATE_VALUE = 34.23;
     
     /**
      * Previous State value
      */
-    private double PREVIOUS_STATE_VALUE = 321.54;
+    private Double PREVIOUS_STATE_VALUE = 321.54;
+    
+    /**
+     * Agent's vision radius
+     */
+    private Integer VISION_RADIUS = 5;
     
     @Before
     public void before() {
 //        TODO: State Impl()
 //        this.currentState = new StateImpl();
 //        this.previousState = new StateImpl();
-        this.agentInfo = new AgentInfoImpl();
-        this.agentInfo.setName(NAME);
-        this.agentInfo.setGoals(GOALS);
-        this.agentInfo.setPreviousState(previousState);
-        this.agentInfo.setPreviousStateValue(PREVIOUS_STATE_VALUE);
-        this.agentInfo.setPreviousAction(PREVIOUS_ACTION);
-        this.agentInfo.setNextAction(NEXT_ACTION);
-        this.agentInfo.setCurrentState(currentState);
-        this.agentInfo.setCurrentStateValue(CURRENT_STATE_VALUE);
+        this.agentInfo = new AgentInfoImpl(NAME, currentState, previousState, 
+        		PREVIOUS_ACTION, NEXT_ACTION, GOALS, CURRENT_STATE_VALUE, PREVIOUS_STATE_VALUE, VISION_RADIUS);
     }
     
     @Test

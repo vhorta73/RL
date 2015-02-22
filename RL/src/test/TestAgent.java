@@ -48,14 +48,19 @@ public class TestAgent {
     private Action NEXT_ACTION = Action.UP; 
     
     /**
-     * Dummy previous state object
+     * Previous state value
      */
-    private String[] PREVIOUS_STATE_OBJECT = { "Previous State Object" };
+    private Integer PREVIOUS_STATE_VALUE = 0;
     
     /**
-     * Dummy current state object
+     * Current state value
      */
-    private String[] CURRENT_STATE_OBJECT = { "Current State Object" };
+    private Integer CURRENT_STATE_VALUE = 0;
+    
+    /**
+     * The Agent's vision radius
+     */
+    private final Integer VISION_RADIUS = 5;
     
     /**
      * Goal amount
@@ -75,13 +80,13 @@ public class TestAgent {
     public void before() {
         // Mocking State
         currentState = Mockito.mock(State.class);
-        Mockito.when(currentState.getState()).thenReturn(CURRENT_STATE_OBJECT);        
-        Mockito.when(previousState.getState()).thenReturn(PREVIOUS_STATE_OBJECT);        
+        Mockito.when(currentState.getStateValue()).thenReturn(CURRENT_STATE_VALUE);        
+        Mockito.when(previousState.getStateValue()).thenReturn(PREVIOUS_STATE_VALUE);        
 
         // Initialize the agent to have expected values.
         
         // Setting NAME
-        agent = new AgentImpl(NAME);
+        agent = new AgentImpl(NAME, VISION_RADIUS);
         
         // Set the previous and nextState as well as the goal to be 2
         List<Action> actionList = new ArrayList<Action>();
@@ -100,6 +105,17 @@ public class TestAgent {
     public void testName() {
         AgentInfo found = agent.info();
         assertEquals(NAME,found.name());
+    }
+
+    /**
+     * Agent was initialized with NAME.
+     * NAME is expected to be found on the returned AgentInfo class
+     * when calling for agent.info()
+     */
+    @Test
+    public void testVisionRadius() {
+        AgentInfo found = agent.info();
+        assertEquals(VISION_RADIUS,found.getVisionRadius());
     }
 
     /**
@@ -124,8 +140,8 @@ public class TestAgent {
     public void testCurrentState() {
         AgentInfo found  = agent.info();
         State foundState = found.currentState();
-        Object state     = foundState.getState();
-        assertEquals(CURRENT_STATE_OBJECT, state);
+        Object state     = foundState.getStateValue();
+        assertEquals(CURRENT_STATE_VALUE, state);
     }
 
     /**
@@ -136,8 +152,8 @@ public class TestAgent {
     public void testPreviousState() {
         AgentInfo found = agent.info();
         State foundState = found.previousState();
-        Object state = foundState.getState();
-        assertEquals(PREVIOUS_STATE_OBJECT, state);
+        Object state = foundState.getStateValue();
+        assertEquals(PREVIOUS_STATE_VALUE, state);
     }
 
     /**

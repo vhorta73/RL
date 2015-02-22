@@ -13,7 +13,7 @@ public class StateImpl implements State {
     /**
      * The State value.
      */
-	private final Object stateValue;
+	private final Integer stateValue;
 	
 	/**
 	 * The Set of available actions
@@ -26,7 +26,7 @@ public class StateImpl implements State {
 	 * @param state the state value
 	 * @param actions list of available actions
 	 */
-	public StateImpl(Object state, Set<Action> actions) {
+	public StateImpl(Integer state, Set<Action> actions) {
 		this.stateValue      = state;
 		this.availableAtions = actions;
 	}
@@ -49,7 +49,7 @@ public class StateImpl implements State {
 		}
 		
 		Set<Action> actions = state.getActionList();
-		if ( this.availableAtions.equals(actions) && this.stateValue.equals(state.getState())) {
+		if ( this.availableAtions.equals(actions) && this.stateValue.equals(state.getStateValue())) {
 			return true;
 		}
 		return false;
@@ -59,7 +59,7 @@ public class StateImpl implements State {
 	 * {@inheritDoc}
 	 */
 	@Override	
-	public Object getState() {
+	public Integer getStateValue() {
 		return stateValue;
 	}
 }
